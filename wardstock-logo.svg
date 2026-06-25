@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 360" role="img" aria-labelledby="title desc">
+  <title id="title">WardStock</title>
+  <desc id="desc">WardStock logo for visual equipment tracking in hospital wards.</desc>
+  <rect width="1240" height="360" rx="42" fill="#f6fbf8"/>
+  <g transform="translate(76 70)">
+    <rect x="0" y="0" width="220" height="220" rx="44" fill="#2f7d5a"/>
+    <path d="M58 68h104v84H58z" fill="#ffffff" opacity="0.96"/>
+    <path d="M74 88h24v24H74zm44 0h24v24h-24zM74 130h24v24H74zm44 0h24v24h-24z" fill="#2f7d5a"/>
+    <path d="M162 102h22v50h-22z" fill="#ffffff" opacity="0.96"/>
+    <circle cx="76" cy="176" r="18" fill="#ffffff"/>
+    <circle cx="150" cy="176" r="18" fill="#ffffff"/>
+    <path d="M76 176h74" stroke="#ffffff" stroke-width="14" stroke-linecap="round"/>
+  </g>
+  <text x="340" y="164" fill="#1f2d2a" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="800" letter-spacing="0">WardStock</text>
+  <text x="346" y="226" fill="#2f7d5a" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" letter-spacing="0">Visual Equipment Tracking for Hospital Wards</text>
+</svg>
