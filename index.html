@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WardStock</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="title-block">
+        <button type="button" class="logo-button" id="logoAboutButton" aria-label="WardStockについて">
+          <img class="product-logo" src="./wardstock-logo.svg" alt="WardStock" />
+        </button>
+        <div class="ward-label">5病棟 物品マップ</div>
+      </div>
+      <div class="ribbon" role="toolbar" aria-label="物品操作">
+        <div class="ribbon-group category-ribbon" id="categoryRibbon">
+          <button class="ribbon-button active" data-filter="all">全体</button>
+        </div>
+        <div class="ribbon-group">
+          <button class="ribbon-button primary" id="newItemButton">新規登録</button>
+          <button class="ribbon-button" id="loanLedgerButton">貸出台帳</button>
+        </div>
+        <div class="ribbon-group search-group">
+          <label for="searchInput">検索</label>
+          <input id="searchInput" type="search" placeholder="ID・物品名・場所" />
+        </div>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="item-palette-panel" aria-label="物品パレット">
+        <div class="palette-heading">
+          <h2 id="paletteTitle">全体の物品</h2>
+          <button class="text-button" id="unusedOnlyButton" aria-pressed="false">未使用物品のみ</button>
+        </div>
+        <div class="palette-list" id="itemList"></div>
+      </section>
+
+      <section class="map-section">
+        <div class="map-topline">
+          <div>
+            <h1>5病棟マップ</h1>
+            <p>病室・ベッド・共用スペースへドラッグして配置</p>
+          </div>
+          <div class="map-legend">
+            <span><b class="legend-dot available"></b>配置可能</span>
+            <span><b class="legend-dot loan"></b>貸出中</span>
+            <span><b class="legend-dot repair"></b>修理中</span>
+          </div>
+        </div>
+        <div class="ward-map" id="wardMap" aria-label="5病棟マップ"></div>
+      </section>
+    </main>
+
+    <dialog class="modal" id="itemModal">
+      <form method="dialog" class="modal-card" id="itemForm">
+        <div class="modal-header">
+          <h2>新規登録</h2>
+          <button type="button" class="icon-button" data-close-modal aria-label="閉じる">×</button>
+        </div>
+        <div class="form-grid">
+          <label>
+            物品カテゴリ
+            <select id="categoryInput" required></select>
+          </label>
+          <label>
+            物品名
+            <input id="nameInput" required placeholder="標準車椅子" />
+          </label>
+          <label>
+            ID番号
+            <input id="idInput" required />
+            <small class="field-help">実際の物品ラベルと同じIDを入力してください</small>
+          </label>
+          <label>
+            所有病棟
+            <input id="ownerInput" value="5病棟" required />
+          </label>
+          <label>
+            初期配置場所
+            <select id="locationInput" required></select>
+          </label>
+          <label>
+            状態
+            <select id="statusInput" required>
+              <option>使用中</option>
+              <option>未使用</option>
+              <option>修理中</option>
+              <option>貸出中</option>
+            </select>
+          </label>
+          <label class="wide">
+            メモ
+            <textarea id="memoInput" rows="3" placeholder="個人情報は入力しないでください"></textarea>
+          </label>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="secondary-button" data-close-modal>キャンセル</button>
+          <button class="primary-button" value="default">登録</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="modal" id="categoryModal">
+      <div class="modal-card" id="categoryManagement">
+        <div class="modal-header">
+          <h2>カテゴリー管理</h2>
+          <button type="button" class="icon-button" data-close-modal aria-label="閉じる">×</button>
+        </div>
+        <div id="categoryManagementBody"></div>
+      </div>
+    </dialog>
+
+    <dialog class="modal" id="detailModal">
+      <div class="modal-card detail-card">
+        <div class="modal-header">
+          <h2>物品詳細</h2>
+          <button type="button" class="icon-button" data-close-modal aria-label="閉じる">×</button>
+        </div>
+        <div id="detailBody"></div>
+      </div>
+    </dialog>
+
+    <dialog class="modal" id="ledgerModal">
+      <div class="modal-card ledger-card">
+        <div class="modal-header">
+          <h2>貸出台帳</h2>
+          <button type="button" class="icon-button" data-close-modal aria-label="閉じる">×</button>
+        </div>
+        <div id="ledgerBody"></div>
+      </div>
+    </dialog>
+
+    <dialog class="modal" id="aboutModal">
+      <div class="modal-card about-card">
+        <div class="modal-header">
+          <h2>About</h2>
+          <button type="button" class="icon-button" data-close-modal aria-label="閉じる">×</button>
+        </div>
+        <div id="aboutBody"></div>
+      </div>
+    </dialog>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
